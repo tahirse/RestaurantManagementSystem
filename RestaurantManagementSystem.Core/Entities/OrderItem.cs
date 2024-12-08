@@ -2,9 +2,10 @@
 
 namespace RestaurantManagementSystem.Core.Entities
 {
-    public class OrderItem
+    public class OrderItem:BaseEntity
     {
-        public MenuItem MenuItem { get; set; } // The menu item being ordered
+
+        public MenuItem MenuItem { get; set; } 
         public int Count { get; set; }
     }
 }
