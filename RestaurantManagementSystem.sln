@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.App", "RestaurantManagementSystem.App\RestaurantManagementSystem.App.csproj", "{719C04A8-3A1C-4B4E-A9D0-8E76757552D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.App", "RestaurantManagementSystem.App\RestaurantManagementSystem.App.csproj", "{719C04A8-3A1C-4B4E-A9D0-8E76757552D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.Core", "..\RestaurantManagementSystem.Core\RestaurantManagementSystem.Core.csproj", "{CB6C409F-B34F-4D9C-B44D-AA140304486B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.DataAccess", "RestaurantManagementSystem.DataAccess\RestaurantManagementSystem.DataAccess.csproj", "{6D35A834-F68B-4770-B7DB-84073C71C88A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.DataAccess", "..\RestaurantManagementSystem.DataAccess\RestaurantManagementSystem.DataAccess.csproj", "{69D333DA-94A8-4D01-A66D-3F280737F939}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.Core", "RestaurantManagementSystem.Core\RestaurantManagementSystem.Core.csproj", "{C03C800E-86B1-4AD7-A63F-93B95F9063A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.Service", "..\RestaurantManagementSystem.Service\RestaurantManagementSystem.Service.csproj", "{1284B1AC-7A50-46C5-8152-91E0F0103CB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.Services", "RestaurantManagementSystem.Services\RestaurantManagementSystem.Services.csproj", "{06E35A1F-387B-4417-9AFD-1270A7F4BB36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{719C04A8-3A1C-4B4E-A9D0-8E76757552D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{719C04A8-3A1C-4B4E-A9D0-8E76757552D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{719C04A8-3A1C-4B4E-A9D0-8E76757552D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CB6C409F-B34F-4D9C-B44D-AA140304486B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB6C409F-B34F-4D9C-B44D-AA140304486B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB6C409F-B34F-4D9C-B44D-AA140304486B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CB6C409F-B34F-4D9C-B44D-AA140304486B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69D333DA-94A8-4D01-A66D-3F280737F939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69D333DA-94A8-4D01-A66D-3F280737F939}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69D333DA-94A8-4D01-A66D-3F280737F939}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69D333DA-94A8-4D01-A66D-3F280737F939}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1284B1AC-7A50-46C5-8152-91E0F0103CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1284B1AC-7A50-46C5-8152-91E0F0103CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1284B1AC-7A50-46C5-8152-91E0F0103CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1284B1AC-7A50-46C5-8152-91E0F0103CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D35A834-F68B-4770-B7DB-84073C71C88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D35A834-F68B-4770-B7DB-84073C71C88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D35A834-F68B-4770-B7DB-84073C71C88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D35A834-F68B-4770-B7DB-84073C71C88A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03C800E-86B1-4AD7-A63F-93B95F9063A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03C800E-86B1-4AD7-A63F-93B95F9063A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03C800E-86B1-4AD7-A63F-93B95F9063A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03C800E-86B1-4AD7-A63F-93B95F9063A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E35A1F-387B-4417-9AFD-1270A7F4BB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E35A1F-387B-4417-9AFD-1270A7F4BB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E35A1F-387B-4417-9AFD-1270A7F4BB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E35A1F-387B-4417-9AFD-1270A7F4BB36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
