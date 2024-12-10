@@ -5,11 +5,16 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.App", "RestaurantManagementSystem.App\RestaurantManagementSystem.App.csproj", "{719C04A8-3A1C-4B4E-A9D0-8E76757552D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.DataAccess", "RestaurantManagementSystem.DataAccess\RestaurantManagementSystem.DataAccess.csproj", "{6D35A834-F68B-4770-B7DB-84073C71C88A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.DataAccess", "RestaurantManagementSystem.DataAccess\RestaurantManagementSystem.DataAccess.csproj", "{6D35A834-F68B-4770-B7DB-84073C71C88A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.Core", "RestaurantManagementSystem.Core\RestaurantManagementSystem.Core.csproj", "{C03C800E-86B1-4AD7-A63F-93B95F9063A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.Core", "RestaurantManagementSystem.Core\RestaurantManagementSystem.Core.csproj", "{C03C800E-86B1-4AD7-A63F-93B95F9063A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagementSystem.Services", "RestaurantManagementSystem.Services\RestaurantManagementSystem.Services.csproj", "{06E35A1F-387B-4417-9AFD-1270A7F4BB36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.Services", "RestaurantManagementSystem.Services\RestaurantManagementSystem.Services.csproj", "{06E35A1F-387B-4417-9AFD-1270A7F4BB36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BFA968E4-13AB-4420-A0CC-F7B8326410B3}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

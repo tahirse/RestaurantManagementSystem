@@ -1,4 +1,5 @@
-﻿using RestaurantManagementSystem.DataAccess.Data;
+﻿using RestaurantManagementSystem.Core.Entities;
+using RestaurantManagementSystem.DataAccess.Data;
 using RestaurantManagementSystem.Services.Interfaces;
 
 
@@ -11,5 +12,8 @@ namespace RestaurantManagementSystem.Services.Services
         {
             _context = new RestaurantContext();
         }
+
+
+       
     }
 }
