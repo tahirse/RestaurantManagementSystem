@@ -1,10 +1,16 @@
-﻿namespace RestaurantManagementSystem.App
+﻿using RestaurantManagementSystem.App.Controllers;
+
+namespace RestaurantManagementSystem.App
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //OrderController orderController = new OrderController();
+            //orderController.Create();
+            MenuController menuController = new MenuController();
+           //menuController.Create();
+            menuController.AddMenuItem();
         }
     }
 }

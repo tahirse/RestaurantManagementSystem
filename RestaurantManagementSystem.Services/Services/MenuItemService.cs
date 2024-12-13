@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantManagementSystem.Core.Entities;
 using RestaurantManagementSystem.DataAccess.Data;
-using RestaurantManagementSystem.Services.Interfaces;
+using RestaurantManagementSystem.Services.Interface;
+
 namespace RestaurantManagementSystem.Services.Services
 {
     public class MenuItemService : IMenuItemService
@@ -93,32 +94,24 @@ namespace RestaurantManagementSystem.Services.Services
             await _context.SaveChangesAsync();
             return existMenuItem;
         }
-        public MenuItem AddMenuItem(int? id, string name, decimal price, string category)
+        public void AddMenuItem(string name, decimal price, string category)
         {
-            if (id is null)
-                throw new Exception("Id is null!!!");
-            var existMenuItem = GetById(id);
-            if (existMenuItem != null)
-                throw new Exception("MenuItem with this id exists!!!");
             if (string.IsNullOrEmpty(name) || price <= 0 || string.IsNullOrEmpty(category))
-                throw new Exception("MenuItem details!!!");
-            var existingMenuItem = _context.MenuItems.SingleOrDefault(m => m.Name == name && m.Price == price && m.Category == category);
+                throw new Exception("Invalid MenuItem details!");
+            var existingMenuItem = _context.MenuItems
+                .SingleOrDefault(m => m.Name == name && m.Category == category);
             if (existingMenuItem != null)
-                throw new Exception("MenuItem with name price and category exists!!!");
+                throw new Exception("MenuItem with the same name and category already exists!");     
             var newMenuItem = new MenuItem
             {
-                Id = id.Value,
                 Name = name,
                 Price = price,
                 Category = category
             };
             _context.MenuItems.Add(newMenuItem);
-            Console.WriteLine($"MenuItem Name: {name}, MenuItem Price: {price}, MenuItem Category: {category}");
             _context.SaveChanges();
-
-            return newMenuItem;
         }
-        public async Task< MenuItem> AddMenuItemAsync(int? id, string name, decimal price, string category)
+        public async Task<MenuItem> AddMenuItemAsync(int? id, string name, decimal price, string category)
         {
             if (id is null)
                 throw new Exception("Id is null!!!");
@@ -166,7 +159,7 @@ namespace RestaurantManagementSystem.Services.Services
         }
         public List<MenuItem> GetMenuItemsByPrice(decimal price)
         {
-            if (price<=0)
+            if (price <= 0)
                 throw new Exception("Category cannot be null!!!");
             var menuItems = _context.MenuItems
                  .Where(m => m.Price == price)

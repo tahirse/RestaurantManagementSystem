@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantManagementSystem.Core.Entities;
 using RestaurantManagementSystem.DataAccess.Data;
-using RestaurantManagementSystem.Services.Interfaces;
+using RestaurantManagementSystem.Services.Interface;
+
 
 
 namespace RestaurantManagementSystem.Services.Services
 {
-    public class OrderService:IOrderService
+    public class OrderService : IOrderService
     {
         private readonly RestaurantContext _context;
         public OrderService()
@@ -37,8 +38,6 @@ namespace RestaurantManagementSystem.Services.Services
             await _context.SaveChangesAsync();
         }
 
-        
-
         public OrderItem GetById(int? id)
         {
             if (id is null)
@@ -52,12 +51,13 @@ namespace RestaurantManagementSystem.Services.Services
         {
             if (id is null)
                 throw new Exception("Id is null!!!");
-            var OrderItem = await _context.MenuItems.SingleOrDefaultAsync(m => m.Id == id);
-            if (OrderItem == null)
-                throw new Exception($"Menuitem not found with Id {id}");
-            return existMenuItem;
+            var exsistOrderItem = await _context.OrderItems.SingleOrDefaultAsync(m => m.Id == id);
+            if (exsistOrderItem == null)
+                throw new Exception($"Orderitem not found with Id {id}");
+            return exsistOrderItem;
         }
-       
+
+
 
     }
 }
