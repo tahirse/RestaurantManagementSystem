@@ -1,5 +1,6 @@
 ﻿
 
+using RestaurantManagementSystem.Core.Entities;
 using RestaurantManagementSystem.Services.Services;
 
 namespace RestaurantManagementSystem.App.Controllers
@@ -20,11 +21,26 @@ namespace RestaurantManagementSystem.App.Controllers
 
         public void EditMenuIte()
         {
-            _menuItemService.EditMenuItem(1, "Soup", 5);
+            foreach (var item in _menuItemService.GetMenuItems())
+            {
+                Console.WriteLine($"Id:{item.Id}\nName:{item.Name}\nPrice:{item.Price}");
+                Console.WriteLine("=================");
+            }
+            Console.WriteLine();
+            Console.Write("Id:");
+            int id=int.Parse(Console.ReadLine());
+
+            _menuItemService.EditMenuItem(id, "Hell", 35m);
         }
         public void AddMenuItem()
         {
             _menuItemService.AddMenuItem("Bizon",23,"Ickiler");
+        }
+
+
+        public void RemoveMenuItem()
+        {
+            _menuItemService.RemoveMenuItem(1);
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantManagementSystem.Core.Entities;
+using RestaurantManagementSystem.DataAccess.Configurations;
 
 namespace RestaurantManagementSystem.DataAccess.Data
 {
@@ -13,6 +14,13 @@ namespace RestaurantManagementSystem.DataAccess.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=Tahir;Database=RestaurantDb;TrustServerCertificate=True;Trusted_Connection=True;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
+            modelBuilder.ApplyConfiguration(new OrdeItemConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
         }
     }
 }

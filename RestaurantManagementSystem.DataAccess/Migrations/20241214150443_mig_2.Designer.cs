@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantManagementSystem.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using RestaurantManagementSystem.DataAccess.Data;
 namespace RestaurantManagementSystem.DataAccess.Migrations
 {
     [DbContext(typeof(RestaurantContext))]
-    partial class RestaurantContextModelSnapshot : ModelSnapshot
+    [Migration("20241214150443_mig_2")]
+    partial class mig_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,7 +82,7 @@ namespace RestaurantManagementSystem.DataAccess.Migrations
                     b.Property<int>("MenuItemId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -94,25 +97,16 @@ namespace RestaurantManagementSystem.DataAccess.Migrations
             modelBuilder.Entity("RestaurantManagementSystem.Core.Entities.OrderItem", b =>
                 {
                     b.HasOne("RestaurantManagementSystem.Core.Entities.MenuItem", "MenuItem")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("MenuItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestaurantManagementSystem.Core.Entities.Order", "Order")
+                    b.HasOne("RestaurantManagementSystem.Core.Entities.Order", null)
                         .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.Navigation("MenuItem");
-
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("RestaurantManagementSystem.Core.Entities.MenuItem", b =>
-                {
-                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("RestaurantManagementSystem.Core.Entities.Order", b =>

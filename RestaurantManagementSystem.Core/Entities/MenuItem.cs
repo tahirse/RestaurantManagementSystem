@@ -12,5 +12,7 @@ namespace RestaurantManagementSystem.Core.Entities
         public decimal Price { get; set; }  
        
         public string Category { get; set; }
+
+        public OrderItem OrderItem { get; set; } 
     }
 }
