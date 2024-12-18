@@ -7,14 +7,29 @@ namespace RestaurantManagementSystem.App
     {
         static void Main(string[] args)
         {
-            //OrderController orderController = new OrderController();
+            OrderController orderController = new OrderController();
             //orderController.Create();
             MenuController menuController = new MenuController();
             //menuController.Create();
-            //menuController.AddMenuItemAsync();
+            //menuController.AddMenuItem();
             //menuController.EditMenuIte();
             // menuController.Create();
-            menuController.RemoveMenuItem();
+            //menuController.RemoveMenuItem();
+            //orderController.RemoveOrder();
+            //orderController.GetOrderByNo();
+            //orderController.AddOrderItem();
+            // Console.WriteLine( orderController.GetOrderItems());
+            //orderController.GetOrdersByDatesInterval();
+            //orderController.GetOrderByDate();
+            orderController.GetOrdersByPriceInterval();
+           
         }
+
+      
+            
+        
+
+       
     }
 }
+

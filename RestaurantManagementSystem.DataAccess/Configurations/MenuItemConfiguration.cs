@@ -7,9 +7,9 @@ namespace RestaurantManagementSystem.DataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<MenuItem> builder) 
         {
-            builder.Property(m => m.Name).IsRequired(true).HasMaxLength(20);
-            builder.Property(m => m.Category).IsRequired(true).HasMaxLength(30);
-            builder.Property(m => m.Price).IsRequired(true);
+            builder.Property(m => m.Name).IsRequired().HasMaxLength(20);
+            builder.Property(m => m.Category).IsRequired().HasMaxLength(30);
+            builder.Property(m => m.Price).IsRequired().HasColumnType("decimal(18,2)");
             builder.HasIndex(m => m.Name).IsUnique();
 
 

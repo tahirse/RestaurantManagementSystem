@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
+using RestaurantManagementSystem.Core.Entities;
 using RestaurantManagementSystem.Services.Services;
 
 namespace RestaurantManagementSystem.App.Controllers
@@ -11,11 +13,34 @@ namespace RestaurantManagementSystem.App.Controllers
         {
             _orderService = new OrderService();
         }
-
-
-        public void Create()
+        public void GetOrdersByDatesInterval()
         {
-            _orderService.Create(new() {  Count = 10, });
+            _orderService.GetOrdersByDatesInterval();
+        }
+        public void GetOrderByDate()
+        {
+            _orderService.GetOrderByDate();
+        }
+        public void GetOrdersByPriceInterval()
+        {
+            _orderService.GetOrdersByPriceInterval();
+        }
+        public void AddOrderItem()
+        {
+            _orderService.AddOrderItem(1,2,2);
+        }
+
+        public void RemoveOrder()
+        {
+            _orderService.RemoveOrder(4);
+        }
+        public void GetOrderByNo()
+        {
+            _orderService.GetOrderByNo();
+        }
+        public List<OrderItem> GetOrderItems()
+        {
+            return _orderService.GetOrderItems();
         }
     }
 }

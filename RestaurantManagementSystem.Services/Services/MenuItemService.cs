@@ -71,7 +71,6 @@ namespace RestaurantManagementSystem.Services.Services
             _context.SaveChanges();
         }
       
-        
         public List<MenuItem> GetMenuItemsByCategory(string category)
         {
             if (string.IsNullOrEmpty(category))

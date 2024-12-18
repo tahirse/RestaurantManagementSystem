@@ -18,9 +18,9 @@ namespace RestaurantManagementSystem.DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
-            modelBuilder.ApplyConfiguration(new OrdeItemConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MenuItemConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof (OrderConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrdeItemConfiguration).Assembly);
         }
     }
 }

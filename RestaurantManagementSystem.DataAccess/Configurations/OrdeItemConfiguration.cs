@@ -11,6 +11,7 @@ namespace RestaurantManagementSystem.DataAccess.Configurations
         {
             builder.Property(o => o.Count).IsRequired(true);
             builder.HasOne(o => o.MenuItem).WithOne(m => m.OrderItem).HasForeignKey<OrderItem>(o => o.MenuItemId);
+           
         }
     }
 }
