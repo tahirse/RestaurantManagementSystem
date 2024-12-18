@@ -4,12 +4,14 @@ namespace RestaurantManagementSystem.Services.Interface
 {
     public interface IOrderService
     {
-        void Create(OrderItem orderItem);
-        
+        void AddOrderItem(int orderNo, int menuItemId, int count);
         Order GetById(int? id);
+        void GetOrderByDate();
+        void GetOrderByNo();
         List<OrderItem> GetOrderItems();
-        public void AddOrderItem();
-
-
+        Task<List<OrderItem>> GetOrderItemsAsync();
+        void GetOrdersByDatesInterval();
+        void GetOrdersByPriceInterval();
+        void RemoveOrder(int? id);
     }
 }

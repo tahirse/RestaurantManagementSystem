@@ -33,7 +33,7 @@ namespace RestaurantManagementSystem.Services.Services
                 existMenuItem.Name = name ?? existMenuItem.Name;
                 existMenuItem.Price = price ?? existMenuItem.Price;
                 _context.SaveChanges();
-            }                  
+            }
         }
         public MenuItem GetById(int? id)
         {
@@ -52,7 +52,7 @@ namespace RestaurantManagementSystem.Services.Services
             _context.MenuItems.Remove(existMenuItem);
             _context.SaveChanges();
         }
-        
+
         public void AddMenuItem(string name, decimal price, string category)
         {
             if (string.IsNullOrEmpty(name) || price <= 0 || string.IsNullOrEmpty(category))
@@ -60,7 +60,7 @@ namespace RestaurantManagementSystem.Services.Services
             var existingMenuItem = _context.MenuItems
                 .SingleOrDefault(m => m.Name == name && m.Category == category);
             if (existingMenuItem != null)
-                throw new Exception("MenuItem with the same name and category already exists!");     
+                throw new Exception("MenuItem with the same name and category already exists!");
             var newMenuItem = new MenuItem
             {
                 Name = name,
@@ -70,7 +70,7 @@ namespace RestaurantManagementSystem.Services.Services
             _context.MenuItems.Add(newMenuItem);
             _context.SaveChanges();
         }
-      
+
         public List<MenuItem> GetMenuItemsByCategory(string category)
         {
             if (string.IsNullOrEmpty(category))
@@ -104,7 +104,7 @@ namespace RestaurantManagementSystem.Services.Services
                 throw new Exception($"With ({price}) not found menuitem");
             return menuItems;
         }
-       
+
         public List<MenuItem> SearchMenuItems(string search)
         {
             if (string.IsNullOrEmpty(search))
@@ -115,6 +115,6 @@ namespace RestaurantManagementSystem.Services.Services
             if (menuItems.Count == 0)
                 throw new Exception($"Not found ({search}) with menuitem!!!");
             return menuItems;
-        }      
+        }
     }
 }

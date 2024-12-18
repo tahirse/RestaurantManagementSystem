@@ -76,7 +76,7 @@ namespace RestaurantManagementSystem.Services.Services
             _context.SaveChanges();
         }
         public void GetOrderByNo()
-        {         
+        {
             Console.WriteLine("Sifarish nömresini daxil edin:");
             string orderNoInput = Console.ReadLine();
             if (string.IsNullOrEmpty(orderNoInput))
@@ -98,7 +98,7 @@ namespace RestaurantManagementSystem.Services.Services
             }
             else
                 Console.WriteLine("Daxil etdiyiniz sifariş nömresi duzgun deyil.");
-            
+
         }
         public void GetOrdersByDatesInterval()
         {
@@ -238,10 +238,6 @@ namespace RestaurantManagementSystem.Services.Services
                 Console.WriteLine("Daxil etdiyiniz tarix düzgün deyil.");
             }
         }
-        public void Create(OrderItem orderItem) => throw new NotImplementedException();
-        void IOrderService.Create(OrderItem orderItem) => throw new NotImplementedException();
-        Order IOrderService.GetById(int? id) => throw new NotImplementedException();
-        List<OrderItem> IOrderService.GetOrderItems() => throw new NotImplementedException();
-        void IOrderService.AddOrderItem() => throw new NotImplementedException();
+
     }
 }
