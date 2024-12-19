@@ -2,6 +2,7 @@
 
 using RestaurantManagementSystem.Core.Entities;
 using RestaurantManagementSystem.Services.Services;
+using System.Security.AccessControl;
 
 namespace RestaurantManagementSystem.App.Controllers
 {
@@ -16,10 +17,10 @@ namespace RestaurantManagementSystem.App.Controllers
 
         public void Create()
         {
-            _menuItemService.Create(new(){  Name = "Soup", Category = "Desert" });
+            _menuItemService.Create(new() { Price = 5, Name = "Dolma", Category = "Yemek" });
         }
 
-        public void EditMenuIte()
+        public void EditMenuItem()
         {
             foreach (var item in _menuItemService.GetMenuItems())
             {
@@ -34,13 +35,29 @@ namespace RestaurantManagementSystem.App.Controllers
         }
         public void AddMenuItem()
         {
-            _menuItemService.AddMenuItem("Bizon",23,"Ickiler");
+            _menuItemService.AddMenuItem();
         }
 
 
         public void RemoveMenuItem()
         {
             _menuItemService.RemoveMenuItem(1);
+        }
+        public List<MenuItem> GetMenuItems()
+        {
+            return _menuItemService.GetMenuItems();
+        }
+        public List<MenuItem> GetMenuItemsByCategory()
+        {
+            return GetMenuItemsByCategory();  
+        }
+        public List<MenuItem> GetMenuItemsByPrice(decimal price)
+        {
+            return GetMenuItemsByPrice(35);
+        }
+        public List<MenuItem> SearchMenuItems(string search)
+        {
+            return _menuItemService.SearchMenuItems(search);    
         }
 
     }

@@ -4,7 +4,7 @@ namespace RestaurantManagementSystem.Services.Interface
 {
     public interface IMenuItemService
     {
-        void AddMenuItem(string name, decimal price, string category);
+        void AddMenuItem();
         void Create(MenuItem menuItem);
         void EditMenuItem(int id, string name, decimal? price);
         MenuItem GetById(int? id);

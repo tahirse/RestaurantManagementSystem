@@ -114,7 +114,13 @@ namespace RestaurantManagementSystem.Services.Services
                 .ToList();
             if (menuItems.Count == 0)
                 throw new Exception($"Not found ({search}) with menuitem!!!");
+            foreach (var item in menuItems)
+            {
+                Console.WriteLine(item.ToString());
+            }
             return menuItems;
         }
+
+        public void AddMenuItem() => throw new NotImplementedException();
     }
 }
