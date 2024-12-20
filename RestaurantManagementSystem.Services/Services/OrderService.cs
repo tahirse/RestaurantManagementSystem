@@ -19,7 +19,6 @@ namespace RestaurantManagementSystem.Services.Services
 
         public List<OrderItem> GetOrderItems() => _context.OrderItems.ToList();
 
-        public async Task<List<OrderItem>> GetOrderItemsAsync() => await _context.OrderItems.ToListAsync();
 
         public void AddOrderItem(int orderNo, int menuItemId, int count)
         {
@@ -37,7 +36,7 @@ namespace RestaurantManagementSystem.Services.Services
             var menuItem = _context.MenuItems.FirstOrDefault(m => m.Id == menuItemId);
             if (menuItem == null)
             {
-                Console.WriteLine($"MenuItemId {menuItemId} ilə məhsul tapılmadı.");
+                Console.WriteLine($"MenuItemId {menuItemId} ile mehsul tapilmadi.");
                 return;
             }
             var orderItem = new OrderItem
@@ -70,6 +69,9 @@ namespace RestaurantManagementSystem.Services.Services
                 throw new Exception($"Order with id {id} not found.");
             foreach (var orderItem in existOrder.OrderItems)
             {
+                Console.WriteLine("Deyishmek istediyiniz sifarisg nomresini daxil edin");
+                int count = orderItem.Count;    
+
                 _context.OrderItems.Remove(orderItem);
             }
             _context.Orders.Remove(existOrder);
@@ -88,7 +90,7 @@ namespace RestaurantManagementSystem.Services.Services
             {
                 var order = _context.Orders.Include(o => o.OrderItems).ThenInclude(o => o.MenuItem).FirstOrDefault(o => o.Id == orderNo);
                 if (order == null)
-                    Console.WriteLine($"Sifarish nömresi {orderNo} ile sifarish tapılmadı.");
+                    Console.WriteLine($"Sifarish nömresi {orderNo} ile sifarish tapilmadi.");
                 else
                 {
                     Console.WriteLine($"Sifariş Nömresi: {orderNo}");
@@ -239,5 +241,6 @@ namespace RestaurantManagementSystem.Services.Services
             }
         }
 
+        public List<OrderItem> GetOrdes() => throw new NotImplementedException();
     }
 }

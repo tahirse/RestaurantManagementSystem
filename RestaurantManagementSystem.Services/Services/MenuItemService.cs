@@ -3,6 +3,7 @@ using RestaurantManagementSystem.Core.Entities;
 using RestaurantManagementSystem.DataAccess.Data;
 using RestaurantManagementSystem.Services.Interface;
 
+
 namespace RestaurantManagementSystem.Services.Services
 {
     public class MenuItemService : IMenuItemService
@@ -25,14 +26,37 @@ namespace RestaurantManagementSystem.Services.Services
             _context.MenuItems.Add(menuItem);
             _context.SaveChanges();
         }
-        public void EditMenuItem(int id, string name, decimal? price)
+        public void EditMenuItem()
         {
-            var existMenuItem = GetById(id);
-            if (existMenuItem is not null)
+            Console.Write("Deyishdirmek istediyiniz menyu  Id-ni daxil edin:");
+            int No;
+            while (!int.TryParse(Console.ReadLine(), out No) || No <= 0)
             {
-                existMenuItem.Name = name ?? existMenuItem.Name;
-                existMenuItem.Price = price ?? existMenuItem.Price;
+                Console.Write("Duzgun melumat daxil edin");
+            }
+            var existMenuItem = _context.MenuItems.FirstOrDefault(item => item.Id == No);
+            if (existMenuItem != null)
+            {
+                Console.Write("Yeni adi daxil edin: ");
+                string name = Console.ReadLine();
+                Console.Write("Yeni qiymet daxil edin: ");
+                decimal cost;
+                while (!decimal.TryParse(Console.ReadLine(), out cost) || cost <= 0)
+                {
+                    Console.Write("Duzgun qiymet daxil edin: ");
+                }
+                Console.Write("Categoriya daxil edin: ");
+                string category = Console.ReadLine();
+
+                existMenuItem.Name = name;
+                existMenuItem.Price = cost;
+                existMenuItem.Category = category;
                 _context.SaveChanges();
+                Console.WriteLine("Menyu ugurla yenilendi.");
+            }
+            else
+            {
+                Console.WriteLine("Verilen ID ile uygun menyu novu tapılmadı.");
             }
         }
         public MenuItem GetById(int? id)
@@ -71,8 +95,9 @@ namespace RestaurantManagementSystem.Services.Services
             _context.SaveChanges();
         }
 
-        public List<MenuItem> GetMenuItemsByCategory(string category)
+        public List<MenuItem> GetMenuItemsByCategory()
         {
+            string category = default;
             if (string.IsNullOrEmpty(category))
                 throw new Exception("Category cannot be null!!!");
             var menuItems = _context.MenuItems
@@ -121,6 +146,6 @@ namespace RestaurantManagementSystem.Services.Services
             return menuItems;
         }
 
-        public void AddMenuItem() => throw new NotImplementedException();
+
     }
 }

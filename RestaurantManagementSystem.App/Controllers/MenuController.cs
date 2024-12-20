@@ -17,31 +17,20 @@ namespace RestaurantManagementSystem.App.Controllers
 
         public void Create()
         {
-            _menuItemService.Create(new() { Price = 5, Name = "Dolma", Category = "Yemek" });
+            _menuItemService.Create(new() { Price = default, Name = "", Category = "" });
         }
 
         public void EditMenuItem()
         {
-            foreach (var item in _menuItemService.GetMenuItems())
-            {
-                Console.WriteLine($"Id:{item.Id}\nName:{item.Name}\nPrice:{item.Price}");
-                Console.WriteLine("=================");
-            }
-            Console.WriteLine();
-            Console.Write("Id:");
-            int id=int.Parse(Console.ReadLine());
-
-            _menuItemService.EditMenuItem(id, "Hell", 35m);
+            _menuItemService.EditMenuItem();
         }
-        public void AddMenuItem()
+        public void AddMenuItem(string name,decimal price,string category)
         {
-            _menuItemService.AddMenuItem();
+            _menuItemService.AddMenuItem(name,price,category);
         }
-
-
         public void RemoveMenuItem()
         {
-            _menuItemService.RemoveMenuItem(1);
+            _menuItemService.RemoveMenuItem(5);
         }
         public List<MenuItem> GetMenuItems()
         {
@@ -49,6 +38,7 @@ namespace RestaurantManagementSystem.App.Controllers
         }
         public List<MenuItem> GetMenuItemsByCategory()
         {
+            
             return GetMenuItemsByCategory();  
         }
         public List<MenuItem> GetMenuItemsByPrice(decimal price)

@@ -1,6 +1,7 @@
 ﻿
 
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Channels;
 
 namespace RestaurantManagementSystem.Core.Entities
 {
@@ -15,5 +16,7 @@ namespace RestaurantManagementSystem.Core.Entities
         public Order Order { get; set; }
        
         public int MenuItemId { get; set; }
+
+        public override string ToString() => $"OrderId: {OrderId}, MenuItemId: {MenuItemId}, Count: {Count} ";
     }
 }

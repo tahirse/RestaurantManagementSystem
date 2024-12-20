@@ -4,13 +4,13 @@ namespace RestaurantManagementSystem.Services.Interface
 {
     public interface IMenuItemService
     {
-        void AddMenuItem();
+        void AddMenuItem(string name, decimal price, string category);
         void Create(MenuItem menuItem);
-        void EditMenuItem(int id, string name, decimal? price);
+        void EditMenuItem();
         MenuItem GetById(int? id);
         List<MenuItem> GetMenuItems();
         Task<List<MenuItem>> GetMenuItemsAsync();
-        List<MenuItem> GetMenuItemsByCategory(string category);
+        List<MenuItem> GetMenuItemsByCategory();
         Task<List<MenuItem>> GetMenuItemsByCategoryAsync(string category);
         List<MenuItem> GetMenuItemsByPrice(decimal price);
         void RemoveMenuItem(int? id);

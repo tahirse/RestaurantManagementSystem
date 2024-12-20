@@ -1,8 +1,4 @@
 ﻿
-
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Channels;
-
 namespace RestaurantManagementSystem.Core.Entities
 {
     public class MenuItem : BaseEntity

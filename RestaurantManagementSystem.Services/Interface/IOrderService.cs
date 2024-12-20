@@ -8,10 +8,9 @@ namespace RestaurantManagementSystem.Services.Interface
         Order GetById(int? id);
         void GetOrderByDate();
         void GetOrderByNo();
-        List<OrderItem> GetOrderItems();
-        Task<List<OrderItem>> GetOrderItemsAsync();
         void GetOrdersByDatesInterval();
         void GetOrdersByPriceInterval();
+        List<OrderItem> GetOrdes();
         void RemoveOrder(int? id);
     }
 }

@@ -27,12 +27,12 @@ namespace RestaurantManagementSystem.App.Controllers
         }
         public void AddOrderItem()
         {
-            _orderService.AddOrderItem(1,2,2);
+            _orderService.AddOrderItem(default,default,default);
         }
 
         public void RemoveOrder()
         {
-            _orderService.RemoveOrder(4);
+            _orderService.RemoveOrder(3);// burda duzelish etmek
         }
         public void GetOrderByNo()
         {

@@ -1,31 +1,15 @@
 ﻿using Microsoft.Identity.Client;
 using RestaurantManagementSystem.App.Controllers;
 using RestaurantManagementSystem.Core.Entities;
-// OrderController orderController = new OrderController();
-//orderController.Create();
-// MenuController menuController = new MenuController();
-// menuController.Create();
-//menuController.AddMenuItem();
-//menuController.EditMenuIte();
-// menuController.Create();
-//menuController.RemoveMenuItem();
-//orderController.RemoveOrder();
-//orderController.GetOrderByNo();
-//orderController.AddOrderItem();
-// Console.WriteLine( orderController.GetOrderItems());
-//orderController.GetOrdersByDatesInterval();
-//orderController.GetOrderByDate();
-//orderController.GetOrdersByPriceInterval();
+
 
 DisplayMenyu();
 
 
 static void DisplayMenyu()
 {
-
-
     bool data = true;
-    OrderController orderController = new OrderController();
+
     MenuController menuController = new MenuController();
     while (data)
     {
@@ -43,7 +27,7 @@ static void DisplayMenyu()
             case "2":
                 OrderOperation();
                 break;
-            case "3":
+            case "0":
                 Console.Write("Sistemden cixish");
                 data = false;
                 break;
@@ -51,8 +35,6 @@ static void DisplayMenyu()
             default:
                 Console.Write("Yalnish secim etmisiniz yeniden daxil edin");
                 break;
-
-
         }
     }
 
@@ -71,56 +53,60 @@ static void MenuOperation()
         Console.WriteLine("5 Categoriyasina gore menu item-lari goster");
         Console.WriteLine("6 Qiymet araligina gore menu item-lar goster");
         Console.WriteLine("7 Menu itemlar arasinda ada gore axtaris et");
-        Console.WriteLine("0 Evvelki menyuya qayıt");
+        Console.WriteLine("0 Evvelki menyuya qayit");
 
         string menuSelect = Console.ReadLine();
-
+        
         switch (menuSelect)
         {
 
+
             case "1":
-                Console.WriteLine("MenuItemName daxil edin");
-                string Name= Console.ReadLine();
-                Console.WriteLine("Price daxil edin");
-                decimal Data=Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("Category daxil edin");
-                string Category= Console.ReadLine();
-                menuController.AddMenuItem();
+                Console.WriteLine("Menyu elave etmek ucun melumatlari daxil edin:");
+                Console.Write("Menyu  adi: ");
+                string name = Console.ReadLine();
+                Console.Write("Qiymet: ");
+                decimal price = Convert.ToDecimal(Console.ReadLine());
+                Console.Write("Kateqoriya: ");
+                string category = Console.ReadLine();
+                menuController.AddMenuItem(name, price, category);
+                Console.WriteLine($"Menyu adi:{name}, Qiymeti: {price}, Category: {category}");
+                    break;
                 break;
-
             case "2":
-                menuController.RemoveMenuItem();
-                break;
-
-            case "3":
+                Console.WriteLine("Mocvud olan menyu");
+                menuController.GetMenuItems().ForEach(x => Console.WriteLine(x));
+               
+                //int num =int.Parse(Console.ReadLine());
                 menuController.EditMenuItem();
                 break;
-
+            case "3":
+                Console.WriteLine("Movcud olan menyunun siyahisi");
+                menuController.GetMenuItems().ForEach(x => Console.WriteLine(x));
+                Console.WriteLine("Silmek istediyiniz enyu nomresini daxil edin");
+                int num=int.Parse(Console.ReadLine());  
+                menuController.RemoveMenuItem();
+                break;
             case "4":
                 menuController.GetMenuItems().ForEach(x => Console.WriteLine(x));
                 break;
-
             case "5":
                 menuController.GetMenuItemsByCategory();
                 break;
-
             case "6":
                 Console.Write("Minimum qiymeti daxil edin: ");
                 decimal Price = decimal.Parse(Console.ReadLine());
                 menuController.GetMenuItemsByPrice(Price);
                 break;
-
             case "7":
                 Console.Write("Axtarılacaq adı daxil edin: ");
                 string search = Console.ReadLine();
                 menuController.SearchMenuItems(search);
                 break;
-           
             case "0":
                 DisplayMenyu();
                 menu = false;
                 break;
-
             default:
                 Console.WriteLine("Yanlısh secim etdiniz.");
                 break;
@@ -130,10 +116,10 @@ static void MenuOperation()
 }
 static void OrderOperation()
 {
+    bool Select = true;
+    OrderController orderController = new OrderController();
 
-    bool orderSelect = true;
-
-    while (orderSelect)
+    while (Select)
     {
         Console.WriteLine("Sifarisler uzerinde aparila bilinecek emeliyyatlar");
         Console.WriteLine("1 Yeni sifaris elave etmek");
@@ -144,6 +130,54 @@ static void OrderOperation()
         Console.WriteLine("6 Verilmis bir tarixde olan sifarislerin gosterilmesi");
         Console.WriteLine("7 Verilmis nomreye esasen hemin nomreli sifarisin melumatlarinin gosterilmesi");
         Console.WriteLine("0 Evveli menuya qayit");
+
+        string orderSelect = Console.ReadLine();
+        switch (orderSelect)
+        {
+            case "1":
+                Console.WriteLine("Sifarish nomresi daxil edin");
+                int data=int.Parse(Console.ReadLine());
+                Console.WriteLine("Menyu nomresi daxil edin");
+                data = int.Parse(Console.ReadLine());
+                Console.WriteLine("Count daxil edin");
+                data=int.Parse(Console.ReadLine());
+                orderController.AddOrderItem();
+                break;
+            case "2":
+                 
+                 orderController.RemoveOrder();
+                break;
+            case "3":
+                 orderController.GetOrderItems().ForEach(x => Console.WriteLine(x));
+                break;
+            case "4":
+                 orderController.GetOrdersByDatesInterval();
+                break;
+            case "5":
+                orderController.GetOrdersByPriceInterval();
+                break;
+            case "6":
+                 Console.WriteLine("Hansi tarixe olan sifarisihi gormek isteyirsiinizse tarixi daxil edin");
+                 data = int.Parse(Console.ReadLine());
+                 orderController.GetOrderByDate();
+                break;
+            case "7":
+                Console.WriteLine("Sifarish nomresini daxil edin");
+                data = int.Parse(Console.ReadLine());
+                orderController.GetOrderByNo();
+                break;
+            case "0":
+                DisplayMenyu();
+                Select = false;
+                break;
+            default:
+                Console.WriteLine("Yanlısh secim etdiniz.");
+                break;
+
+
+        }
+    
+
     }
 
 }
